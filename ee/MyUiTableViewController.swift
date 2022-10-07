@@ -1,16 +1,17 @@
 //
-//  TableViewController.swift
+//  MyUiTableViewController.swift
 //  ee
 //
-//  Created by Apps2T on 30/9/22.
+//  Created by Apps2T on 7/10/22.
 //
 
-import Foundation
 import UIKit
 
-class MyTableViewController : UIViewController, UITableViewDelegate, UITableViewDataSource{
+class MyUiTableViewController: UITableViewController {
+
     
-    @IBOutlet weak var tableView : UITableView!
+
+    @IBOutlet weak var uiTableView : UITableView!
     
     let arrayCar = [
         Car (imgCell : "https://img.remediosdigitales.com/d442b6/a3l_drive_004_v2/840_560.jpg",
@@ -34,21 +35,14 @@ class MyTableViewController : UIViewController, UITableViewDelegate, UITableView
         Car (imgCell : "https://cdn.motor1.com/images/mgl/PKZQL/s3/1997-toyota-supra-sold-for-176-000-at-auction.jpg",
             carName : "Supra mk4",
             carPrice : "no price maG")
+        
     ]
     
-    
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        tableView.delegate = self
-        tableView.dataSource = self
-    }
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return arrayCar.count
     }
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell : MyCell = tableView.dequeueReusableCell(withIdentifier: "customCell", for : indexPath) as! MyCell
         cell.carName.text = arrayCar[indexPath.row].getCarName()
@@ -56,7 +50,7 @@ class MyTableViewController : UIViewController, UITableViewDelegate, UITableView
         cell.imgCell.image = getImage(url : arrayCar[indexPath.row].getImgUrl())
         return cell
     }
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 200.0
     }
     
@@ -65,5 +59,6 @@ class MyTableViewController : UIViewController, UITableViewDelegate, UITableView
         let imageData : Data = try! Data(contentsOf: imgUrl)
         return UIImage(data: imageData)!
     }
-    
+
+
 }

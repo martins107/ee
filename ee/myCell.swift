@@ -11,7 +11,7 @@ import UIKit
 class MyCell : UITableViewCell{
     
     
-    @IBOutlet weak private var labelNombre: UILabel!
-    @IBOutlet weak var labelUserName: UILabel!
-    
+    @IBOutlet weak var carName: UILabel!
+    @IBOutlet weak var carPrice: UILabel!
+    @IBOutlet weak var imgCell: UIImageView!
 }
